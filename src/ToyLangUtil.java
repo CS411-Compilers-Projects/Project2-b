@@ -11,7 +11,7 @@ public class ToyLangUtil {
     //Booleans are covered under identifiers and reserved words
     private static final String idRegex = "[A-Za-z_][A-Za-z0-9_]*";
     private static final String intRegex = "0[xX][0-9a-fA-F]+|\\d+";
-    private static final String doubleRegex = "\\d+\\.\\d*[Ee][+-]\\d+|\\d+\\.\\d*[Ee]\\d+|\\d+\\.\\d*";
+    private static final String doubleRegex = "[-+]?[0-9]*\\.?[0-9]+[eE][-+]?[0-9]+?";
     //Recognize ASCII or Unicode parentheses
     private static final String stringRegex = "\".*?\"|“.*?”";
     private static final String opPuncRegex = "//|/\\*|\\*/|\\+|\\-|\\*|/|%|<=|>=|<|>|==|!=|&&|\\|\\||!|=|;|,|\\.|\\(|\\)|\\[|\\]|\\{|\\}|\"|“|”";
