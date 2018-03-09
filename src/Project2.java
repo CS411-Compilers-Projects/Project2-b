@@ -15,7 +15,7 @@ public class Project2 {
         System.err.close();
 
         //Parse the first file
-//        parseFile("Test File 1", "TestFile1.txt");
+        parseFile("Test File 1", "TestFile1.txt");
 
         //Parse the second file
         parseFile("Test File 2", "TestFile2.txt");
