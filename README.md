@@ -5,7 +5,6 @@ Scott Matsumura
 
 CS 411-01 Compilers and Interpreters
 Project #2
-(Due: 11:59 PM, Thursday, 03/08/2018)
 
 INSTRUCTIONS:
 Add the external CUP extension to the java library (java-cup-11b.jar ; java-cup-11b-runtime.jar).

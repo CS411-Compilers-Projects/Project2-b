@@ -14,15 +14,13 @@ public class Project2 {
         //Prevents additional output for parsing errors
         System.err.close();
 
-        parseFile("Test Only", "test.txt");
-
         //Parse the first file
 //        parseFile("Test File 1", "TestFile1.txt");
 
         //Parse the second file
-//        parseFile("SECOND FILE", "SimpleToy2.toy");
+        parseFile("Test File 2", "TestFile2.txt");
 
-//        //Parse test case 1
+        //Parse test case 1
 //        parseFile("TEST CASE 1", "TestCase01.txt");
 //
 //        //Parse test case 2
