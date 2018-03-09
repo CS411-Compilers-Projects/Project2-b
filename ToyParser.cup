@@ -36,7 +36,7 @@ non terminal	Program, Decls, Decl;
 non terminal	VariableDecl, FunctionDecl, ClassDecl, InterfaceDecl;
 non terminal	Variable, Type, Formals, Variables, Extends, Implements, Implement;
 non terminal	Field, Fields, Prototype, StmtBlock, VariableDecls, Stmts, Stmt;
-non terminal	OptionExpr, WhileStmt, ForStmt, BreakStmt, StmtDecl, ExprDecl;
+non terminal	OptionExpr, WhileStmt, ForStmt, BreakStmt, ExprDecl;
 non terminal	ReturnStmt, PrintStmt, Expr, Exprs, Lvalue, Call, Actuals, Constant;
 non terminal	IfStmt;
 
@@ -75,263 +75,259 @@ Decl ::=
 		{: System.out.print("[reduce 6]"); :} 
 	| InterfaceDecl	
 		{: System.out.print("[reduce 7]"); :}
-	| StmtDecl
-		{: System.out.print("[reduce 7b]"); :}
+	| Stmt
+		{: System.out.print("[reduce 8]"); :}
 	| ExprDecl
-        {: System.out.print("[reduce 7c]"); :} ;
+        {: System.out.print("[reduce 9]"); :} ;
 
 VariableDecl ::=
 	Variable _semicolon	
-		{: System.out.print("[reduce 8]"); :} ;
+		{: System.out.print("[reduce 10]"); :} ;
 
 Variable ::=
 	Type _id
-		{: System.out.print("[reduce 9]"); :} ;
+		{: System.out.print("[reduce 11]"); :} ;
 
 Type ::=
 	_int 
-		{: System.out.print("[reduce 10]"); :} 
+		{: System.out.print("[reduce 12]"); :}
 	| _double
-		{: System.out.print("[reduce 11]"); :} 
+		{: System.out.print("[reduce 13]"); :}
 	| _boolean
-		{: System.out.print("[reduce 12]"); :} 
+		{: System.out.print("[reduce 14]"); :}
 	| _string
-		{: System.out.print("[reduce 13]"); :} 
+		{: System.out.print("[reduce 15]"); :}
 	| Type _leftbracket _rightbracket 	
-		{: System.out.print("[reduce 14]"); :} 
+		{: System.out.print("[reduce 16]"); :}
 	| _id												
-		{: System.out.print("[reduce 15]"); :} ;
+		{: System.out.print("[reduce 17]"); :} ;
 
 FunctionDecl ::= 
 	Type _id _leftparen Formals _rightparen StmtBlock 
-		{: System.out.print("[reduce 16]"); :} 
+		{: System.out.print("[reduce 18]"); :}
 	| _void _id _leftparen Formals _rightparen StmtBlock
-		{: System.out.print("[reduce 17]"); :} ;
+		{: System.out.print("[reduce 19]"); :} ;
 						
 Formals ::=
 	// EMPTY
-		{: System.out.print("[reduce 18]"); :} 
+		{: System.out.print("[reduce 20]"); :}
 	| Variables
-		{: System.out.print("[reduce 19]"); :} ;
+		{: System.out.print("[reduce 21]"); :} ;
 
 Variables ::= 
 	Variable
-		{: System.out.print("[reduce 20]"); :}  
+		{: System.out.print("[reduce 22]"); :}
 	| Variable _comma Variables	
-		{: System.out.print("[reduce 21]"); :} ;
+		{: System.out.print("[reduce 23]"); :} ;
 
 ClassDecl ::= 
 	_class _id Extends Implements _leftbrace Fields _rightbrace
-		{: System.out.print("[reduce 22]"); :} ;
+		{: System.out.print("[reduce 24]"); :} ;
 
 Extends ::=
 	// EMPTY
-		{: System.out.print("[reduce 23]"); :}
+		{: System.out.print("[reduce 25]"); :}
 	| _extends _id
-		{: System.out.print("[reduce 24]"); :};
+		{: System.out.print("[reduce 26]"); :};
 
 Implements ::= 
 	// EMPTY
-		{: System.out.print("[reduce 25]"); :}
+		{: System.out.print("[reduce 27]"); :}
 	| Implement
-		{: System.out.print("[reduce 26]"); :};
+		{: System.out.print("[reduce 28]"); :};
 
 Implement ::=
 	_implements _id
-		{: System.out.print("[reduce 27]"); :}
+		{: System.out.print("[reduce 29]"); :}
 	| _implements _id _comma Implement
-		{: System.out.print("[reduce 28]"); :};
+		{: System.out.print("[reduce 30]"); :};
 
 Fields ::= 	
 	// EMPTY
-		{: System.out.print("[reduce 29]"); :}
+		{: System.out.print("[reduce 31]"); :}
 	| Field Fields
-		{: System.out.print("[reduce 30]"); :};
+		{: System.out.print("[reduce 32]"); :};
 
 Field ::= 
 	VariableDecl
-		{: System.out.print("[reduce 31]"); :} 
+		{: System.out.print("[reduce 33]"); :}
 	| FunctionDecl	
-		{: System.out.print("[reduce 32]"); :}
-	| StmtDecl
-        		{: System.out.print("[reduce 32a]"); :}
+		{: System.out.print("[reduce 34]"); :}
+	| Stmt
+        {: System.out.print("[reduce 35]"); :}
     | ExprDecl
-                {: System.out.print("[reduce 32b]"); :} ;
+        {: System.out.print("[reduce 36]"); :} ;
 
 InterfaceDecl ::= 
 	_interface _id _leftbrace Prototype _rightbrace	
-		{: System.out.print("[reduce 33]"); :};
+		{: System.out.print("[reduce 37]"); :};
 
 Prototype ::=
 	// EMPTY
-		{: System.out.print("[reduce 34]"); :}
+		{: System.out.print("[reduce 38]"); :}
 	| Type _id _leftparen Formals _rightparen _semicolon Prototype 
-		{: System.out.print("[reduce 35]"); :}
+		{: System.out.print("[reduce 39]"); :}
 	| _void _id _leftparen Formals _rightparen _semicolon Prototype
-		{: System.out.print("[reduce 36]"); :};
+		{: System.out.print("[reduce 40]"); :};
 					
 StmtBlock ::= 
 	_leftbrace VariableDecls Stmts _rightbrace	
-		{: System.out.print("[reduce 37]"); :}
+		{: System.out.print("[reduce 41]"); :}
 	| _leftbrace Stmts _rightbrace
-        {: System.out.print("[reduce 37b]"); :} ;
+        {: System.out.print("[reduce 42]"); :} ;
 
 VariableDecls ::=
 	// EMPTY
-		{: System.out.print("[reduce 38]"); :}
+		{: System.out.print("[reduce 43]"); :}
 	| VariableDecl VariableDecls
-		{: System.out.print("[reduce 39]"); :};
+		{: System.out.print("[reduce 44]"); :};
 
 Stmts ::=
 	// EMPTY
-		{: System.out.print("[reduce 40]"); :}
+		{: System.out.print("[reduce 45]"); :}
 	| Stmt Stmts
-		{: System.out.print("[reduce 41]"); :};
-
-StmtDecl ::=
-	Stmt _semicolon
-		{: System.out.print("[reduce 41b]"); :} ;
+		{: System.out.print("[reduce 46]"); :};
 
 Stmt ::= 
 	OptionExpr _semicolon 
-		{: System.out.print("[reduce 42]"); :}
-	| IfStmt 
-		{: System.out.print("[reduce 43]"); :}
-	| WhileStmt 
-		{: System.out.print("[reduce 44]"); :}
-	| ForStmt 	
-		{: System.out.print("[reduce 45]"); :}
-	| BreakStmt
-		{: System.out.print("[reduce 46]"); :}
-	| ReturnStmt 
 		{: System.out.print("[reduce 47]"); :}
-	| PrintStmt 
+	| IfStmt 
 		{: System.out.print("[reduce 48]"); :}
+	| WhileStmt 
+		{: System.out.print("[reduce 49]"); :}
+	| ForStmt 	
+		{: System.out.print("[reduce 50]"); :}
+	| BreakStmt
+		{: System.out.print("[reduce 51]"); :}
+	| ReturnStmt 
+		{: System.out.print("[reduce 52]"); :}
+	| PrintStmt
+		{: System.out.print("[reduce 53]"); :}
 	| StmtBlock
-		{: System.out.print("[reduce 49]"); :};
+		{: System.out.print("[reduce 54]"); :};
 
 IfStmt ::= 
 	_if _leftparen Expr _rightparen Stmt
-		{: System.out.print("[reduce 50]"); :}
+		{: System.out.print("[reduce 55]"); :}
 	| _if _leftparen Expr _rightparen StmtBlock
-        {: System.out.print("[reduce 50b]"); :}
+        {: System.out.print("[reduce 56]"); :}
     |  _if _leftparen Expr _rightparen Stmt _else Stmt
-        {: System.out.print("[reduce 51]"); :}
+        {: System.out.print("[reduce 57]"); :}
 	|  _if _leftparen Expr _rightparen StmtBlock _else StmtBlock
-		{: System.out.print("[reduce 51b]"); :} ;
+		{: System.out.print("[reduce 58]"); :} ;
 
 WhileStmt ::=
 	_while _leftparen Expr _rightparen Stmt
-		{: System.out.print("[reduce 52]"); :}
+		{: System.out.print("[reduce 59]"); :}
 	| _while _leftparen Expr _rightparen StmtBlock
-		{: System.out.print("[reduce 52]"); :} ;
+		{: System.out.print("[reduce 60]"); :} ;
 
 ForStmt ::=
 	_for _leftparen OptionExpr _semicolon Expr _semicolon OptionExpr _rightparen Stmt
-		{: System.out.print("[reduce 53]"); :}
+		{: System.out.print("[reduce 61]"); :}
 	| _for _leftparen OptionExpr _semicolon Expr _semicolon OptionExpr _rightparen StmtBlock
-		{: System.out.print("[reduce 53b]"); :} ;
+		{: System.out.print("[reduce 62]"); :} ;
 
 BreakStmt ::= 
 	_break _semicolon
-		{: System.out.print("[reduce 54]"); :} ;
+		{: System.out.print("[reduce 63]"); :} ;
 
 ReturnStmt ::= 
 	_return OptionExpr _semicolon		
-		{: System.out.print("[reduce 55]"); :} ;
+		{: System.out.print("[reduce 64]"); :} ;
 
 PrintStmt ::= 
 	_println _leftparen Exprs _rightparen _semicolon
-		{: System.out.print("[reduce 56]"); :} ;
+		{: System.out.print("[reduce 65]"); :} ;
 
 ExprDecl ::=
 	Expr _semicolon
-		{: System.out.print("[reduce 56b]"); :} ;
+		{: System.out.print("[reduce 66]"); :} ;
 
 Expr ::= 
 	Lvalue _assignop Expr
-		{: System.out.print("[reduce 57]"); :}
-	| Constant
-		{: System.out.print("[reduce 58]"); :}
-	| Lvalue
-		{: System.out.print("[reduce 59]"); :}
-	| Call 
-		{: System.out.print("[reduce 60]"); :}
-	| _leftparen Expr _rightparen 
-		{: System.out.print("[reduce 61]"); :}
-	| Expr _plus Expr 	
-		{: System.out.print("[reduce 62]"); :}
-	| Expr _minus Expr 
-		{: System.out.print("[reduce 63]"); :}
-	| Expr _multiplication Expr 
-		{: System.out.print("[reduce 64]"); :}
-	| Expr _division Expr 
-		{: System.out.print("[reduce 65]"); :}
-	| Expr _mod Expr 	
-		{: System.out.print("[reduce 66]"); :}
-	| _uminus Expr
 		{: System.out.print("[reduce 67]"); :}
-	| Expr _less Expr 	
+	| Constant
 		{: System.out.print("[reduce 68]"); :}
-	| Expr _lessequal Expr
+	| Lvalue
 		{: System.out.print("[reduce 69]"); :}
-	| Expr _greater Expr 
+	| Call 
 		{: System.out.print("[reduce 70]"); :}
-	| Expr _greaterequal Expr 
+	| _leftparen Expr _rightparen 
 		{: System.out.print("[reduce 71]"); :}
-	| Expr _equal Expr 
+	| Expr _plus Expr 	
 		{: System.out.print("[reduce 72]"); :}
-	| Expr _notequal Expr 
+	| Expr _minus Expr 
 		{: System.out.print("[reduce 73]"); :}
-	| Expr _and Expr 
+	| Expr _multiplication Expr 
 		{: System.out.print("[reduce 74]"); :}
-	| Expr _or Expr 
+	| Expr _division Expr 
 		{: System.out.print("[reduce 75]"); :}
-	| _not Expr 
+	| Expr _mod Expr 	
 		{: System.out.print("[reduce 76]"); :}
-	| _readln _leftparen _rightparen 
+	| _uminus Expr
 		{: System.out.print("[reduce 77]"); :}
+	| Expr _less Expr 	
+		{: System.out.print("[reduce 78]"); :}
+	| Expr _lessequal Expr
+		{: System.out.print("[reduce 79]"); :}
+	| Expr _greater Expr 
+		{: System.out.print("[reduce 80]"); :}
+	| Expr _greaterequal Expr 
+		{: System.out.print("[reduce 81]"); :}
+	| Expr _equal Expr 
+		{: System.out.print("[reduce 82]"); :}
+	| Expr _notequal Expr 
+		{: System.out.print("[reduce 83]"); :}
+	| Expr _and Expr 
+		{: System.out.print("[reduce 84]"); :}
+	| Expr _or Expr 
+		{: System.out.print("[reduce 85]"); :}
+	| _not Expr 
+		{: System.out.print("[reduce 86]"); :}
+	| _readln _leftparen _rightparen 
+		{: System.out.print("[reduce 87]"); :}
 	| _newarray _leftparen _intconstant _comma Type _rightparen
-		{: System.out.print("[reduce 78]"); :};
+		{: System.out.print("[reduce 88]"); :};
 			
 Lvalue ::= 
 	_id
-		{: System.out.print("[reduce 79]"); :}
+		{: System.out.print("[reduce 89]"); :}
 	| Lvalue _leftbracket Expr _rightbracket 
-		{: System.out.print("[reduce 80]"); :}
+		{: System.out.print("[reduce 90]"); :}
 	| Lvalue _period _id
-		{: System.out.print("[reduce 81]"); :};
+		{: System.out.print("[reduce 91]"); :};
 
 Call ::=
 	_id _leftparen Actuals _rightparen
-		{: System.out.print("[reduce 82]"); :}
+		{: System.out.print("[reduce 92]"); :}
 	| _id _period _id _leftparen Actuals _rightparen
-		{: System.out.print("[reduce 83]"); :};
+		{: System.out.print("[reduce 93]"); :};
 
 Actuals ::=
 	// EMPTY
-		{: System.out.print("[reduce 84]"); :} 
+		{: System.out.print("[reduce 94]"); :}
 	| Exprs	
-		{: System.out.print("[reduce 85]"); :};
+		{: System.out.print("[reduce 95]"); :};
 
 Exprs ::= 
 	Expr
-		{: System.out.print("[reduce 86]"); :}
+		{: System.out.print("[reduce 96]"); :}
 	| Expr _comma Exprs
-		{: System.out.print("[reduce 87]"); :};
+		{: System.out.print("[reduce 97]"); :};
 
 Constant ::=
 	_intconstant
-		{: System.out.print("[reduce 88]"); :}
+		{: System.out.print("[reduce 98]"); :}
 	| _doubleconstant
-		{: System.out.print("[reduce 89]"); :}
+		{: System.out.print("[reduce 99]"); :}
 	| _stringconstant 
-		{: System.out.print("[reduce 90]"); :}
+		{: System.out.print("[reduce 100]"); :}
 	| _booleanconstant
-		{: System.out.print("[reduce 91]"); :};
+		{: System.out.print("[reduce 101]"); :};
 
 OptionExpr ::= 
 	// EMPTY
-		{: System.out.print("[reduce 92]"); :}
+		{: System.out.print("[reduce 102]"); :}
 	| Expr
-		{: System.out.print("[reduce 93]"); :};
+		{: System.out.print("[reduce 103]"); :};
