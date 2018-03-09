@@ -136,8 +136,8 @@ Implements ::=
 	| Implement
 		{: System.out.print("[reduce 26]"); :};
 
-Implement ::= 
-	_implements _id 
+Implement ::=
+	_implements _id
 		{: System.out.print("[reduce 27]"); :}
 	| _implements _id _comma Implement
 		{: System.out.print("[reduce 28]"); :};
@@ -152,7 +152,11 @@ Field ::=
 	VariableDecl
 		{: System.out.print("[reduce 31]"); :} 
 	| FunctionDecl	
-		{: System.out.print("[reduce 32]"); :};
+		{: System.out.print("[reduce 32]"); :}
+	| StmtDecl
+        		{: System.out.print("[reduce 32a]"); :}
+    | ExprDecl
+                {: System.out.print("[reduce 32b]"); :} ;
 
 InterfaceDecl ::= 
 	_interface _id _leftbrace Prototype _rightbrace	
@@ -327,7 +331,7 @@ Constant ::=
 		{: System.out.print("[reduce 91]"); :};
 
 OptionExpr ::= 
-	//EMPTY
+	// EMPTY
 		{: System.out.print("[reduce 92]"); :}
 	| Expr
 		{: System.out.print("[reduce 93]"); :};
