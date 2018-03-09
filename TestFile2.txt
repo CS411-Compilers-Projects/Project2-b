@@ -1,0 +1,17 @@
+"this"
+true
+false
+maybe
+test_expr = (a[i] + b - c) % d;
+val1 || val2 && val8
+//a single line comment without any other things in it
+tesval //a single line comment with preceding symbols
+/*testing a
+multi
+line
+comment*/ IDENTIFIER_
+/*invalid multi line comment */ not anymore */
+bool bracket_test() {
+    return true;
+}
+int test=3+(int)15.05820E2;
